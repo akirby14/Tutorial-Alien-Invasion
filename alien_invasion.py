@@ -71,6 +71,7 @@ class AlienInvasion:
             self._reset_level()
             self.settings.increase_difficulty()
             self.game_stats.update_level()
+            self.HUD.update_level()
             
 
     def _check_game_status(self):
@@ -89,9 +90,9 @@ class AlienInvasion:
     def restart_game(self):
         self.settings.initialize_dynamic_settings()
         self.game_stats.reset_stats()
-        self.HUD.update_scores
-        self._reset_level
-        self.ship._center_ship
+        self.HUD.update_scores()
+        self._reset_level()
+        self.ship._center_ship()
         self.game_active = True
         pygame.mouse.set_visible(False)
 
