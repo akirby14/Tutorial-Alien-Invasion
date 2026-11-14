@@ -1,3 +1,10 @@
+"""
+    Program Name: Alien Invasion
+    Author: Adryiana Kirby
+    Purpose: This file creates the ship and manages its behavior, including movement, collision detection, and rendering.
+    Date Updated: 10/25/26
+"""
+
 import pygame
 from typing import TYPE_CHECKING
 
@@ -7,7 +14,11 @@ if TYPE_CHECKING:
 
 class Ship:
 
+    """ A class to manage the ship in the game."""
+
     def __init__(self, game: 'AlienInvasion', arsenal: 'Arsenal'):
+        """ Initialize the ship and set its starting position."""
+
         self.game = game
         self.screen = game.screen
         self.settings = game.settings
@@ -23,15 +34,20 @@ class Ship:
         self.arsenal = arsenal
 
     def _center_ship(self):
+        """ Center the ship on the screen."""
+
         self.rect.midbottom = self.boundaries.midbottom
         self.x = float(self.rect.x)
 
     def update(self):
+        """ Update the ship's position based on movement flags and update the arsenal."""
 
         self._update_ship_movement()
         self.arsenal.update_arsenal()
 
     def _update_ship_movement(self):
+        """ Update the ship's position based on movement flags."""
+
         temp_speed = self.settings.ship_speed
         if self.moving_right and self.rect.right < self.boundaries.right:
             self.x += temp_speed
@@ -41,13 +57,19 @@ class Ship:
         self.rect.x = self.x
 
     def draw(self):
+        """ Draw the ship and its arsenal to the screen."""
+
         self.arsenal.draw()
         self.screen.blit(self.image, self.rect)
 
     def fire(self):
+        """ Fire a bullet if the limit has not been reached yet."""
+
         return self.arsenal.fire_bullet()
 
     def check_collisions(self, other_group):
+        """ Check for collisions between the ship and other objects (e.g., aliens)."""
+
         if pygame.sprite.spritecollideany(self, other_group):
             self._center_ship()
             return True

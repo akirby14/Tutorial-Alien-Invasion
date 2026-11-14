@@ -1,3 +1,10 @@
+"""
+    Program Name: Alien Invasion
+    Author: Adryiana Kirby
+    Purpose: This file creates the alien and manages its behavior, collision detection, and rendering.
+    Date Updated: 10/25/26
+"""
+
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
@@ -7,7 +14,11 @@ if TYPE_CHECKING:
 
 
 class Alien(Sprite):
+    """ A class to represent a single alien in the game."""
+
     def __init__(self,fleet: 'AlienFleet', x: float, y: float):
+        """ Initialize the alien and set its starting position."""
+
         super().__init__()
 
         self.fleet = fleet
@@ -30,6 +41,8 @@ class Alien(Sprite):
         self.x = float(self.rect.x)
 
     def update(self):
+        """ Update the alien's position based on the fleet's direction and speed."""
+
         temp_speed = self.settings.fleet_speed
 
         #if self.check_edges():
@@ -41,8 +54,12 @@ class Alien(Sprite):
         self.rect.y = self.y
 
     def check_edges(self):
+        """ Return True if the alien is at the edge of the screen."""
+
         return (self.rect.right >= self.boundaries.right or self.rect.left <= self.boundaries.left)
 
     def draw_alien(self):
+        """ Draw the alien at its current location."""
+        
         self.screen.blit(self.image, self.rect)
 
