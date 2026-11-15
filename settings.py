@@ -20,6 +20,8 @@ class Settings:
         self.bg_file = Path.cwd() / 'Assets' / 'images' / 'scenebackground.png'
         self.difficulty_scale = 1.1
         self.scores_file = Path.cwd() / 'Assets' / 'file' / 'scores.json'
+        self.background_music = Path.cwd() / 'Assets' / 'sound' / 'background_music.mp3'
+        self.game_over_music = Path.cwd() / 'Assets' / 'sound' / 'game_over.mp3'
 
         self.ship_file = Path.cwd() / 'Assets' / 'images' / 'slingshot.png'
         self.ship_w = 175
@@ -42,6 +44,7 @@ class Settings:
 
         self.text_color = (255,255,255)
         self.button_font_size = 25
+        self.button_click_sound = Path.cwd() / 'Assets' / 'sound' / 'click.wav'
         self.HUD_font_size = 20
         self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Boldonse' / 'Boldonse-Regular.ttf'
 
