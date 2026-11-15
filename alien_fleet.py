@@ -9,6 +9,7 @@
 import pygame
 from alien import Alien
 from typing import TYPE_CHECKING
+from settings import Settings
 
 if TYPE_CHECKING:
     from alien_invasion import AlienInvasion
@@ -45,6 +46,8 @@ class AlienFleet:
         self._create_rectangle_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
 
     def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
+        #Change this to change the shape of the fleet to a rectangle instead of a grid
+        
         """ Creates a rectangular fleet of aliens based on the specified dimensions and offsets. """
 
         for row in range(fleet_h):
@@ -93,6 +96,9 @@ class AlienFleet:
         self.fleet.add(new_alien)
 
     def check_fleet_edges(self):
+
+        #Add an image flip when the fleet changes direction here
+
         """ Checks if any alien in the fleet has reached the edge of the screen. If so, the fleet will drop down and change direction. """
 
         alien: Alien
@@ -100,7 +106,14 @@ class AlienFleet:
             if alien.check_edges():
                 self._drop_alien_fleet()
                 self.fleet_direction *= -1
+                self._flip_alien_image()
                 break
+
+    def _flip_alien_image(self):
+        """ Flips the alien image horizontally. """
+
+        for alien in self.fleet:
+            alien.image = pygame.transform.flip(alien.image, True, False)
 
     def _drop_alien_fleet(self):
         """ Drops the entire alien fleet down by the specified drop speed. """

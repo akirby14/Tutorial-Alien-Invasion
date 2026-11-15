@@ -34,8 +34,8 @@ class Settings:
 
         self.alien_file = Path.cwd() / 'Assets' / 'images' / 'blackfly.gif'
         self.buzz_sound = Path.cwd() / 'Assets' / 'sound' / 'fly-buzz.mp3'
-        self.alien_w = 50
-        self.alien_h = 50
+        self.alien_w = 75
+        self.alien_h = 75
         self.fleet_diretion = 1
         
         self.button_w = 200
