@@ -40,14 +40,23 @@ class AlienInvasion:
         self.clock = pygame.time.Clock()
 
         pygame.mixer.init()
+        self.background_music = pygame.mixer.Sound(self.settings.background_music)
+        self.background_music.set_volume(0.4)
+
+        self.game_over_music = pygame.mixer.Sound(self.settings.game_over_music)
+        self.game_over_music.set_volume(0.4)
+
         self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
         self.laser_sound.set_volume(0.7)
 
         self.buzz_sound = pygame.mixer.Sound(self.settings.buzz_sound)
-        self.buzz_sound.set_volume(0.7)
+        self.buzz_sound.set_volume(0.9)
 
         self.impact_sound = pygame.mixer.Sound(self.settings.impact_sound)
         self.impact_sound.set_volume(0.7)
+
+        self.button_click_sound = pygame.mixer.Sound(self.settings.button_click_sound)
+        self.button_click_sound.set_volume(0.7)
 
         self.ship = Ship(self, Arsenal(self))
         self.alien_fleet = AlienFleet(self)
@@ -63,7 +72,6 @@ class AlienInvasion:
             self._check_events()
             if self.game_active:
                 self.ship.update()
-                self.buzz_sound.play()
                 self.alien_fleet.update_fleet()
                 self._check_collisions()
             self._update_screen()
@@ -95,13 +103,14 @@ class AlienInvasion:
 
     def _check_game_status(self):
         """ Checks the game status when the ship collides with an alien or when an alien reaches the bottom of the screen. 
-        Updates the number of ships left and resets the level if necessary. 
-        """
+        Updates the number of ships left and resets the level if necessary. """
+
         if self.game_stats.ships_left >0:
             self.game_stats.ships_left -= 1
             self._reset_level()
             sleep(0.5)
         else:
+            self.game_over()
             self.game_active = False
     
     def _reset_level(self):
@@ -113,6 +122,9 @@ class AlienInvasion:
 
     def restart_game(self):
         """ Restarts the game by resetting the game settings, statistics, and HUD, and centering the ship. """
+        self.game_over_music.stop()
+        self.background_music.play(loops=-1)
+        self.buzz_sound.play(loops=-1)
 
         self.settings.initialize_dynamic_settings()
         self.game_stats.reset_stats()
@@ -121,6 +133,15 @@ class AlienInvasion:
         self.ship._center_ship()
         self.game_active = True
         pygame.mouse.set_visible(False)
+
+    def game_over(self):
+        """ Ends the game by stopping the background music and buzz sound, and displaying a game over message. """
+
+        self.background_music.stop()
+        self.buzz_sound.stop()
+        self.game_over_music.play()
+        
+        self.play_button = Button(self, "Try Again")
 
     def _update_screen(self):
         """ Updates the screen by drawing the background, ship, alien fleet, HUD, and play button (if the game is inactive). """
@@ -158,6 +179,7 @@ class AlienInvasion:
 
         mouse_pos = pygame.mouse.get_pos()
         if self.play_button.check_clicked(mouse_pos):
+            self.button_click_sound.play()
             self.restart_game()
 
     def _check_keyup_events(self, event):
