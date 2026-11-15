@@ -40,21 +40,19 @@ class AlienFleet:
         screen_w = self.settings.screen_w
         screen_h = self.settings.screen_h
 
-        fleet_w, fleet_h = self.calculate_fleet_size(alien_w, screen_w, alien_h, screen_h)
+        fleet_w, fleet_h = self.calculate_fleet_size(alien_w, screen_w, alien_h, screen_h) 
         x_offset, y_offset = self.calculate_offsets(alien_w, alien_h, screen_w, fleet_w, fleet_h)
             
         self._create_rectangle_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
 
-    def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
-        #Change this to change the shape of the fleet to a rectangle instead of a grid
-        
+    def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):        
         """ Creates a rectangular fleet of aliens based on the specified dimensions and offsets. """
 
         for row in range(fleet_h):
             for col in range(fleet_w):
-                current_x = alien_w * col + x_offset
+                current_x = alien_w * col + x_offset 
                 current_y = alien_h * row + y_offset
-                if col %2 == 0 or row %2 == 0:
+                if col < row or col >= fleet_w - row:
                     continue
                 self._create_alien(current_x, current_y)
 
@@ -96,9 +94,6 @@ class AlienFleet:
         self.fleet.add(new_alien)
 
     def check_fleet_edges(self):
-
-        #Add an image flip when the fleet changes direction here
-
         """ Checks if any alien in the fleet has reached the edge of the screen. If so, the fleet will drop down and change direction. """
 
         alien: Alien
