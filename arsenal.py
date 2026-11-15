@@ -2,7 +2,7 @@
     Program Name: Alien Invasion
     Author: Adryiana Kirby
     Purpose: This file creates the arsenal and manages its behavior, including firing bullets, and rendering them on the screen.
-    Date Updated: 10/20/26
+    Date Updated: 11/13/26
 """
 
 import pygame

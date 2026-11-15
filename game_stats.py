@@ -2,7 +2,7 @@
     Program Name: Alien Invasion
     Author: Adryiana Kirby
     Purpose: This file creates the game statistics and manages its behavior, including score tracking, level progression, and saving high scores.
-    Date Updated: 11/9/26
+    Date Updated: 11/13/26
 """
 
 # from pathlib import Path

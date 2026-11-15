@@ -2,7 +2,7 @@
     Program Name: Alien Invasion
     Author: Adryiana Kirby
     Purpose: This file initializes the game, manages the main game loop, handles events, and updates the screen.
-    Date Updated: 11/9/26
+    Date Updated: 11/15/26
 """
 
 import sys

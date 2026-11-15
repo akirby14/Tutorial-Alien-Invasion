@@ -2,7 +2,7 @@
     Program Name: Alien Invasion
     Author: Adryiana Kirby
     Purpose: This file creates the button and manages its behavior, including rendering and click detection.
-    Date Updated: 11/9/26
+    Date Updated: 11/13/26
 """
 
 import pygame.font

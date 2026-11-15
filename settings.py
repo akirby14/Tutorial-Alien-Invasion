@@ -2,7 +2,7 @@
     Program Name: Alien Invasion
     Author: Adryiana Kirby
     Purpose: This file creates the settings and manages the game's configuration.
-    Date Updated: 11/9/26
+    Date Updated: 11/15/26
 """
 
 from pathlib import Path

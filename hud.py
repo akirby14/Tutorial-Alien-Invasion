@@ -2,7 +2,7 @@
     Program Name: Alien Invasion
     Author: Adryiana Kirby
     Purpose: This file creates the HUD and manages its behavior, including displaying scores and lives.
-    Date Updated: 11/9/26
+    Date Updated: 11/13/26
 """
 
 import pygame.font

@@ -2,7 +2,7 @@
     Program Name: Alien Invasion
     Author: Adryiana Kirby
     Purpose: This file creates the alien and manages its behavior, collision detection, and rendering.
-    Date Updated: 10/25/26
+    Date Updated: 11/13/26
 """
 
 import pygame
