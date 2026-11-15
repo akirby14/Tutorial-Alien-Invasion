@@ -46,7 +46,7 @@ class AlienFleet:
         self._create_rectangle_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
 
     def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):        
-        """ Creates a rectangular fleet of aliens based on the specified dimensions and offsets. """
+        """ Creates a triangular fleet of aliens based on the specified dimensions and offsets. """
 
         for row in range(fleet_h):
             for col in range(fleet_w):
